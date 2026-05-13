@@ -1,0 +1,14 @@
+{
+  "name": "solana-token-sample",
+  "version": "1.0.0",
+  "description": "Sample project to create an SPL token on Solana devnet",
+  "type": "module",
+  "scripts": {
+    "start": "node create-token.js"
+  },
+  "dependencies": {
+    "@metaplex-foundation/mpl-token-metadata": "^1.8.0",
+    "@solana/spl-token": "^0.4.12",
+    "@solana/web3.js": "^1.76.0"
+  }
+}
