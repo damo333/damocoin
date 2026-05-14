@@ -64,7 +64,8 @@ async function main() {
   }
 
   const payer = readKeypairFromFile(keypairPath);
-  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+  // Use mainnet-beta by default (can be overridden by Solana CLI config)
+  const connection = new Connection("https://api.mainnet-beta.solana.com", "confirmed");
 
   const tokenName = "DamoCoin";
   console.log(`Creating new token: ${tokenName}`);
@@ -107,7 +108,7 @@ async function main() {
   );
 
   console.log("Minted initial supply:", initialSupply.toString(), "units");
-  console.log("\n🎉 DamoCoin successfully created on devnet!");
+  console.log("\n🎉 DamoCoin successfully created on mainnet!");
   console.log("📊 Summary:");
   console.log("  Mint address: " + mint.toBase58());
   console.log("  Token account: " + payerTokenAccount.address.toBase58());
