@@ -30,10 +30,25 @@ This sample shows how to create your own Solana-based token using the Solana dev
 
 ## Run
 ```bash
-node create-token.js path/to/your/keypair.json
+node create-token.js
 ```
 
-If no path is passed, the script will use the default Solana CLI keypair path from `solana config get`.
+The script automatically uses your default Solana CLI keypair from `~/.config/solana/id.json`. 
+
+Usage options:
+```bash
+# Use default keypair and default metadata URI
+node create-token.js
+
+# Use custom keypair only (default metadata URI)
+node create-token.js path/to/your/keypair.json
+
+# Use default keypair with custom metadata URI
+node create-token.js https://damo333.github.io/damocoin/solana-token-sample/damocoin.json
+
+# Use custom keypair and custom metadata URI
+node create-token.js path/to/your/keypair.json https://damo333.github.io/damocoin/solana-token-sample/damocoin.json
+```
 
 ## Metadata
 This script now also creates on-chain Metaplex metadata for `DamoCoin` so wallets and explorers can identify it by name and symbol.
@@ -127,6 +142,10 @@ Follow these steps to launch DamoCoin cleanly:
 
 4. Create the mint and token:
    ```bash
+   node create-token.js
+   ```
+   This uses your default Solana CLI keypair automatically. For a custom keypair:
+   ```bash
    node create-token.js path/to/your/keypair.json
    ```
 
@@ -136,8 +155,9 @@ Follow these steps to launch DamoCoin cleanly:
 
 6. Re-run the script with the hosted metadata URI:
    ```bash
-   node create-token.js path/to/your/keypair.json <METADATA_URL>
+   node create-token.js https://damo333.github.io/damocoin/solana-token-sample/damocoin.json
    ```
+   This will use your default keypair and the hosted metadata.
 
 7. Publish the repo to GitHub:
    - push the `solana-token-sample` folder to `https://github.com/damo333/damocoin`

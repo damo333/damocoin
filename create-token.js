@@ -15,7 +15,7 @@ import {
   mintTo,
 } from "@solana/spl-token";
 import {
-  createCreateMetadataAccountV2Instruction,
+  createCreateMetadataAccountV3Instruction,
   PROGRAM_ID as TOKEN_METADATA_PROGRAM_ID,
 } from "@metaplex-foundation/mpl-token-metadata";
 
@@ -30,9 +30,32 @@ function getDefaultSolanaKeypairPath() {
 }
 
 async function main() {
-  const keypairPath = process.argv[2] || getDefaultSolanaKeypairPath();
+  let keypairPath = getDefaultSolanaKeypairPath();
+  let metadataUri = "https://example.com/damocoin.json";
+
+  // Parse arguments flexibly: can be (keypair), (keypair, metadata), or (metadata)
+  const arg1 = process.argv[2];
+  const arg2 = process.argv[3];
+
+  if (arg1) {
+    // Check if arg1 looks like a URL (starts with http)
+    if (arg1.startsWith("http")) {
+      metadataUri = arg1;
+    } else {
+      // Treat as keypair path
+      keypairPath = arg1;
+      if (arg2) {
+        metadataUri = arg2;
+      }
+    }
+  }
+  
+  console.log(`Using keypair from: ${keypairPath}`);
+  console.log(`Using metadata URI: ${metadataUri}`);
+  
   if (!fs.existsSync(keypairPath)) {
-    console.error(`Keypair file not found: ${keypairPath}`);
+    console.error(`Keypair file not found at: ${keypairPath}`);
+    console.error("Generate a keypair with: solana-keygen new --outfile <path>");
     process.exit(1);
   }
 
@@ -40,9 +63,7 @@ async function main() {
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
   const tokenName = "DamoCoin";
-  const metadataUri = process.argv[3] || "https://example.com/damocoin.json";
   console.log(`Creating new token: ${tokenName}`);
-  console.log("Metadata URI:", metadataUri);
   console.log("Using wallet:", payer.publicKey.toBase58());
 
   const balance = await connection.getBalance(payer.publicKey);
@@ -101,10 +122,9 @@ async function main() {
     creators: null,
     collection: null,
     uses: null,
-    isMutable: true,
   };
 
-  const metadataIx = createCreateMetadataAccountV2Instruction(
+  const metadataIx = createCreateMetadataAccountV3Instruction(
     {
       metadata: metadataPDA,
       mint,
@@ -113,9 +133,10 @@ async function main() {
       updateAuthority: payer.publicKey,
     },
     {
-      createMetadataAccountArgsV2: {
+      createMetadataAccountArgsV3: {
         data: metadataData,
         isMutable: true,
+        collectionDetails: null,
       },
     }
   );
