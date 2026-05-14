@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DamoCoin - Your Solana Token</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .token-info {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .token-info h2 {
+            margin-top: 0;
+            color: #ffd700;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        .buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #ffd700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 DamoCoin</h1>
+        <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">
+            Your custom Solana SPL token - Created with ❤️ on Solana blockchain
+        </p>
+
+        <div class="token-info">
+            <h2>Token Information</h2>
+            <p><strong>Name:</strong> DamoCoin</p>
+            <p><strong>Symbol:</strong> DMCN</p>
+            <p><strong>Network:</strong> Solana Devnet</p>
+            <p><strong>Mint Address:</strong> <code>GWPJYzMWaTCa6fPb9iZJBDreWD3qxyE5CeZaRrMna54x</code></p>
+            <p><strong>Total Supply:</strong> 1,000,000,000,000 DMCN (1 Trillion)</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">1T</div>
+                <div class="stat-label">Total Supply</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">9</div>
+                <div class="stat-label">Decimals</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">SOL</div>
+                <div class="stat-label">Blockchain</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2026</div>
+                <div class="stat-label">Created</div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="https://explorer.solana.com/address/GWPJYzMWaTCa6fPb9iZJBDreWD3qxyE5CeZaRrMna54x?cluster=devnet" class="btn" target="_blank">
+                🔍 View on Explorer
+            </a>
+            <a href="https://github.com/damo333/damocoin" class="btn" target="_blank">
+                📁 GitHub Repo
+            </a>
+            <a href="https://solana.com" class="btn" target="_blank">
+                🌐 Solana Website
+            </a>
+        </div>
+
+        <div class="token-info">
+            <h2>About DamoCoin</h2>
+            <p>
+                DamoCoin is a custom SPL token created on the Solana blockchain.
+                It demonstrates the power of Solana's fast and low-cost transactions
+                for token creation and management.
+            </p>
+            <p>
+                This token was created using Node.js, the Solana Web3.js library,
+                and the SPL Token program. The complete source code is available
+                on GitHub for educational purposes.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 DamoCoin | Built on Solana | Created by damo333</p>
+        </div>
+    </div>
+</body>
+</html>
