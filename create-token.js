@@ -14,10 +14,9 @@ import {
   getOrCreateAssociatedTokenAccount,
   mintTo,
 } from "@solana/spl-token";
-import {
-  createCreateMetadataAccountV3Instruction,
-  PROGRAM_ID as TOKEN_METADATA_PROGRAM_ID,
-} from "@metaplex-foundation/mpl-token-metadata";
+import pkg from "@metaplex-foundation/mpl-token-metadata";
+const { createCreateMetadataAccountV3Instruction, MPL_TOKEN_METADATA_PROGRAM_ID } = pkg;
+
 
 function readKeypairFromFile(filePath) {
   const secretKey = JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -108,10 +107,10 @@ async function main() {
   const [metadataPDA] = await PublicKey.findProgramAddress(
     [
       Buffer.from("metadata"),
-      TOKEN_METADATA_PROGRAM_ID.toBuffer(),
+      MPL_TOKEN_METADATA_PROGRAM_ID.toBuffer(),
       mint.toBuffer(),
     ],
-    TOKEN_METADATA_PROGRAM_ID
+    MPL_TOKEN_METADATA_PROGRAM_ID
   );
 
   const metadataData = {
