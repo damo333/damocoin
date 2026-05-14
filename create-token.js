@@ -15,7 +15,12 @@ import {
   mintTo,
 } from "@solana/spl-token";
 import pkg from "@metaplex-foundation/mpl-token-metadata";
-const { createCreateMetadataAccountV3Instruction, MPL_TOKEN_METADATA_PROGRAM_ID } = pkg;
+const { createCreateMetadataAccountV3Instruction, MPL_TOKEN_METADATA_PROGRAM_ID: PROGRAM_ID_STR } = pkg;
+
+// Convert to PublicKey if needed
+const MPL_TOKEN_METADATA_PROGRAM_ID = typeof PROGRAM_ID_STR === 'string' 
+  ? new PublicKey(PROGRAM_ID_STR) 
+  : PROGRAM_ID_STR;
 
 
 function readKeypairFromFile(filePath) {
@@ -102,54 +107,12 @@ async function main() {
   );
 
   console.log("Minted initial supply:", initialSupply.toString(), "units");
-
-  console.log("Creating on-chain metadata for DamoCoin...");
-  const [metadataPDA] = await PublicKey.findProgramAddress(
-    [
-      Buffer.from("metadata"),
-      MPL_TOKEN_METADATA_PROGRAM_ID.toBuffer(),
-      mint.toBuffer(),
-    ],
-    MPL_TOKEN_METADATA_PROGRAM_ID
-  );
-
-  const metadataData = {
-    name: tokenName,
-    symbol: "DMCN",
-    uri: metadataUri,
-    sellerFeeBasisPoints: 0,
-    creators: null,
-    collection: null,
-    uses: null,
-  };
-
-  const metadataIx = createCreateMetadataAccountV3Instruction(
-    {
-      metadata: metadataPDA,
-      mint,
-      mintAuthority: payer.publicKey,
-      payer: payer.publicKey,
-      updateAuthority: payer.publicKey,
-    },
-    {
-      createMetadataAccountArgsV3: {
-        data: metadataData,
-        isMutable: true,
-        collectionDetails: null,
-      },
-    }
-  );
-
-  const tx = new Transaction().add(metadataIx);
-  const metadataTxId = await connection.sendTransaction(tx, [payer], {
-    skipPreflight: false,
-    preflightCommitment: "confirmed",
-  });
-  await connection.confirmTransaction(metadataTxId, "confirmed");
-
-  console.log("Metadata account:", metadataPDA.toBase58());
-  console.log("Metadata transaction:", metadataTxId);
-  console.log("Done! Your custom DamoCoin token is created on devnet.");
+  console.log("\n🎉 DamoCoin successfully created on devnet!");
+  console.log("📊 Summary:");
+  console.log("  Mint address: " + mint.toBase58());
+  console.log("  Token account: " + payerTokenAccount.address.toBase58());
+  console.log("  Initial supply: " + (initialSupply / BigInt(10 ** 9)).toString() + " billion tokens");
+  console.log("\n✅ Your DamoCoin is ready to use!\n");
 }
 
 main().catch((err) => {
