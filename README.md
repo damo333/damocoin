@@ -107,6 +107,21 @@ The sample metadata uses a placeholder image URL. Replace `image` and `propertie
 ### DamoCoin logo
 A sample logo is included at `damocoin-logo.svg`. You can host that file on IPFS or any static host and then update `damocoin.json` to point at that URL.
 
+### Add DAMO to the Solana token registry
+A ready-to-submit token list entry has been added as `solana-token-list-entry.json`.
+
+To add DAMO to the shared Solana token list (used by Phantom and many wallets):
+1. Create a fork of `https://github.com/solana-labs/token-list`
+2. Add the entry from `solana-token-list-entry.json` into the appropriate list file
+   - for example, `tokenlist.json` under the `tokens` array
+3. Open a pull request with the new entry
+4. Wait for the Solana Labs maintainers to review and merge it
+
+Your `logoURI` is already set to the GitHub Pages-hosted asset:
+`https://damo333.github.io/damocoin/damocoin-logo.svg`
+
+Once the PR is accepted, Phantom and other wallets will automatically recognize DAMO by name and symbol.
+
 ### Host on IPFS
 1. Install an IPFS CLI or use a service like Web3.Storage or nft.storage.
 2. Upload `damocoin.json` and `damocoin-logo.svg`.

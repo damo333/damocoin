@@ -1,0 +1,26 @@
+diff --git a/tokenlist.json b/tokenlist.json
+index 0000000..0000000 100644
+--- a/tokenlist.json
++++ b/tokenlist.json
+@@
+   "tokens": [
++    {
++      "chainId": 101,
++      "address": "CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx",
++      "symbol": "DAMO",
++      "name": "DamoCoin",
++      "decimals": 9,
++      "logoURI": "https://damo333.github.io/damocoin/damocoin-logo.svg",
++      "tags": ["utility"],
++      "extensions": {
++        "website": "https://damo333.github.io/damocoin/",
++        "twitter": "https://twitter.com/damo333",
++        "coingeckoId": "",
++        "discord": "",
++        "telegram": "",
++        "github": "https://github.com/damo333/damocoin"
++      }
++    },
+     ...
+   ]
+ }
