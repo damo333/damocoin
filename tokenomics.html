@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DamoCoin Tokenomics</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0e1a;
+      --surface: #111827;
+      --border:  #1f2d45;
+      --accent:  #3b82f6;
+      --accent2: #8b5cf6;
+      --text:    #f1f5f9;
+      --muted:   #94a3b8;
+      --green:   #22c55e;
+      --gold:    #f59e0b;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; border-bottom: 1px solid var(--border);
+      background: rgba(10,14,26,0.85); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; text-decoration: none; color: var(--text); }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 50%; }
+
+    .hero {
+      text-align: center; padding: 64px 24px 48px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; }
+    .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--muted); margin-top: 12px; font-size: 1rem; max-width: 520px; margin-inline: auto; }
+
+    .content { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .section { margin-top: 48px; }
+    .section h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+    /* Supply card */
+    .supply-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; text-align: center;
+    }
+    .supply-number { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; color: var(--gold); letter-spacing: -2px; }
+    .supply-label { color: var(--muted); margin-top: 8px; font-size: 0.95rem; }
+
+    /* Distribution table */
+    .dist-table { width: 100%; border-collapse: collapse; }
+    .dist-table th {
+      text-align: left; padding: 10px 16px; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .dist-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .dist-table tr:last-child td { border-bottom: none; }
+    .dist-table td:last-child { color: var(--muted); font-size: 0.85rem; }
+
+    .pill {
+      display: inline-block; padding: 3px 10px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .pill-gold { background: rgba(245,158,11,0.15); color: var(--gold); }
+    .pill-blue { background: rgba(59,130,246,0.15); color: var(--accent); }
+
+    /* Bar */
+    .bar-wrap { background: var(--border); border-radius: 999px; height: 10px; margin-top: 4px; }
+    .bar { height: 10px; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+    /* Info rows */
+    .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .info-row:last-child { border-bottom: none; }
+    .info-row span:first-child { color: var(--muted); }
+    .info-row span:last-child { font-weight: 600; }
+    code { font-family: monospace; font-size: 0.8rem; color: var(--accent); word-break: break-all; }
+
+    .notice {
+      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 12px; padding: 16px 20px; font-size: 0.875rem; color: var(--muted);
+      line-height: 1.6; margin-top: 16px;
+    }
+
+    footer {
+      text-align: center; padding: 32px 24px;
+      color: var(--muted); font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="damocoin-logo.svg" alt="DAMO" />
+      DamoCoin
+    </a>
+  </nav>
+
+  <div class="hero">
+    <h1><span>DAMO</span> Tokenomics</h1>
+    <p>A transparent breakdown of the DamoCoin token supply, distribution, and allocation.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- TOTAL SUPPLY -->
+    <div class="section">
+      <h2>Total Supply</h2>
+      <div class="supply-card">
+        <div class="supply-number">1,000,000,000</div>
+        <div class="supply-label">DAMO — fixed supply, no inflation, no minting after launch</div>
+      </div>
+    </div>
+
+    <!-- DISTRIBUTION -->
+    <div class="section">
+      <h2>Token Distribution</h2>
+      <div class="info-card">
+        <table class="dist-table">
+          <thead>
+            <tr>
+              <th>Allocation</th>
+              <th>Amount</th>
+              <th>%</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill pill-gold">Creator wallet</span></td>
+              <td>900,000,000</td>
+              <td>
+                90%
+                <div class="bar-wrap"><div class="bar" style="width:90%"></div></div>
+              </td>
+              <td>Held by project creator</td>
+            </tr>
+            <tr>
+              <td><span class="pill pill-blue">Raydium liquidity</span></td>
+              <td>~100,000,000</td>
+              <td>
+                ~10%
+                <div class="bar-wrap"><div class="bar" style="width:10%"></div></div>
+              </td>
+              <td>Deposited into DAMO/SOL CLMM pool</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="notice">
+          There was no presale, no private sale, and no investor allocation. All tokens were minted to the creator wallet at launch. A portion was subsequently deposited into the Raydium liquidity pool to enable trading.
+        </div>
+      </div>
+    </div>
+
+    <!-- TOKEN DETAILS -->
+    <div class="section">
+      <h2>Token Details</h2>
+      <div class="info-card">
+        <div class="info-row"><span>Name</span><span>DamoCoin</span></div>
+        <div class="info-row"><span>Symbol</span><span>DAMO</span></div>
+        <div class="info-row"><span>Blockchain</span><span>Solana Mainnet</span></div>
+        <div class="info-row"><span>Token Standard</span><span>Solana SPL Token</span></div>
+        <div class="info-row"><span>Decimals</span><span>9</span></div>
+        <div class="info-row"><span>Total Supply</span><span>1,000,000,000 DAMO</span></div>
+        <div class="info-row"><span>Mintable</span><span>No — mint authority not revoked but supply is fixed at launch</span></div>
+        <div class="info-row"><span>Mint Address</span><span><code>CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx</code></span></div>
+      </div>
+    </div>
+
+    <!-- VESTING -->
+    <div class="section">
+      <h2>Vesting &amp; Lock-up</h2>
+      <div class="info-card">
+        <div class="info-row"><span>Vesting schedule</span><span>None</span></div>
+        <div class="info-row"><span>Lock-up period</span><span>None</span></div>
+        <div class="info-row"><span>Team allocation</span><span>None — single creator wallet</span></div>
+        <div class="info-row"><span>Presale / ICO</span><span>None</span></div>
+      </div>
+      <div class="notice">
+        DamoCoin has no formal vesting or lock-up mechanisms. The project is open-source and the complete token creation process is documented on <a href="https://github.com/damo333/damocoin" style="color:var(--accent)">GitHub</a>.
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 DamoCoin · <a href="index.html">Home</a> · <a href="https://github.com/damo333/damocoin">GitHub</a> · <a href="https://explorer.solana.com/address/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx">Explorer</a></p>
+  </footer>
+
+</body>
+</html>
