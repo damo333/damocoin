@@ -79,27 +79,47 @@ The logo is hosted at:
 https://damo333.github.io/damocoin/damocoin-logo.svg
 ```
 
-## Token registry
+## Token visibility
 
-### On-chain metadata (primary — wallets read this)
+### On-chain metadata (primary — wallets read this directly)
 
-Run `node set-metadata.js` to write Metaplex metadata on-chain. Phantom, Solflare, and most wallets read this directly — no registry PR needed.
+On-chain Metaplex metadata is already set on the mainnet mint. To update it:
 
-### Jupiter token list (community standard)
+```bash
+node set-metadata.js
+```
 
-`solana-labs/token-list` is archived and no longer maintained. The current community standard is the Jupiter token list:
-
-1. Fork https://github.com/jup-ag/token-list
-2. Add the entry from `solana-token-list-entry.json` to `src/tokens/solana.tokenlist.json`
-3. Open a pull request
+Phantom, Solflare, and most Solana wallets read this on-chain data — no registry PR needed for wallet display.
 
 ### Solana Explorer
 
-Tokens with valid on-chain Metaplex metadata are automatically labelled in the explorer at:
+Tokens with valid on-chain Metaplex metadata are automatically labelled:
 
 ```
 https://explorer.solana.com/address/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx
 ```
+
+### Solscan
+
+Submit token info at:
+```
+https://solscan.io/token/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx
+```
+Click **"Update token info"** and fill in name, symbol, logo, website. Uses the data in `solana-token-list-entry.json`.
+
+### Jupiter
+
+Jupiter (jup.ag) now uses organic discovery — no PR required. Token page:
+```
+https://jup.ag/tokens/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx
+```
+Community members can submit **smart likes** there to help get DAMO verified. Creating a liquidity pool on a DEX (Raydium, Orca) will make the token tradeable and discoverable.
+
+### DexScreener / Birdeye
+
+Both auto-list tokens once a liquidity pool exists. No manual submission needed — add liquidity on Raydium or Orca and the token appears automatically.
+
+> Note: `solana-labs/token-list` and `jup-ag/token-list` on GitHub are both archived and no longer accept PRs. The `solana-token-list-entry.json` file is kept for reference.
 
 ## Contributing
 
