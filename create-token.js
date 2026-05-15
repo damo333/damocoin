@@ -4,10 +4,10 @@ import os from "os";
 import {
   Connection,
   Keypair,
-  clusterApiUrl,
   LAMPORTS_PER_SOL,
   PublicKey,
   Transaction,
+  sendAndConfirmTransaction,
 } from "@solana/web3.js";
 import {
   createMint,
@@ -15,13 +15,15 @@ import {
   mintTo,
 } from "@solana/spl-token";
 import pkg from "@metaplex-foundation/mpl-token-metadata";
-const { createCreateMetadataAccountV3Instruction, MPL_TOKEN_METADATA_PROGRAM_ID: PROGRAM_ID_STR } = pkg;
+const {
+  createCreateMetadataAccountV3Instruction,
+  MPL_TOKEN_METADATA_PROGRAM_ID: PROGRAM_ID_STR,
+} = pkg;
 
-// Convert to PublicKey if needed
-const MPL_TOKEN_METADATA_PROGRAM_ID = typeof PROGRAM_ID_STR === 'string' 
-  ? new PublicKey(PROGRAM_ID_STR) 
-  : PROGRAM_ID_STR;
-
+const MPL_TOKEN_METADATA_PROGRAM_ID =
+  typeof PROGRAM_ID_STR === "string"
+    ? new PublicKey(PROGRAM_ID_STR)
+    : PROGRAM_ID_STR;
 
 function readKeypairFromFile(filePath) {
   const secretKey = JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -29,34 +31,40 @@ function readKeypairFromFile(filePath) {
 }
 
 function getDefaultSolanaKeypairPath() {
-  const home = os.homedir();
-  return path.join(home, ".config", "solana", "id.json");
+  return path.join(os.homedir(), ".config", "solana", "id.json");
+}
+
+function deriveMetadataPDA(mint) {
+  const [pda] = PublicKey.findProgramAddressSync(
+    [
+      Buffer.from("metadata"),
+      MPL_TOKEN_METADATA_PROGRAM_ID.toBuffer(),
+      mint.toBuffer(),
+    ],
+    MPL_TOKEN_METADATA_PROGRAM_ID
+  );
+  return pda;
 }
 
 async function main() {
   let keypairPath = getDefaultSolanaKeypairPath();
-  let metadataUri = "https://example.com/damocoin.json";
+  let metadataUri = "https://damo333.github.io/damocoin/damocoin.json";
 
-  // Parse arguments flexibly: can be (keypair), (keypair, metadata), or (metadata)
   const arg1 = process.argv[2];
   const arg2 = process.argv[3];
 
   if (arg1) {
-    // Check if arg1 looks like a URL (starts with http)
     if (arg1.startsWith("http")) {
       metadataUri = arg1;
     } else {
-      // Treat as keypair path
       keypairPath = arg1;
-      if (arg2) {
-        metadataUri = arg2;
-      }
+      if (arg2) metadataUri = arg2;
     }
   }
-  
+
   console.log(`Using keypair from: ${keypairPath}`);
   console.log(`Using metadata URI: ${metadataUri}`);
-  
+
   if (!fs.existsSync(keypairPath)) {
     console.error(`Keypair file not found at: ${keypairPath}`);
     console.error("Generate a keypair with: solana-keygen new --outfile <path>");
@@ -64,56 +72,70 @@ async function main() {
   }
 
   const payer = readKeypairFromFile(keypairPath);
-  // Use mainnet-beta by default (can be overridden by Solana CLI config)
   const connection = new Connection("https://api.mainnet-beta.solana.com", "confirmed");
 
-  const tokenName = "DamoCoin";
-  console.log(`Creating new token: ${tokenName}`);
   console.log("Using wallet:", payer.publicKey.toBase58());
-
   const balance = await connection.getBalance(payer.publicKey);
   console.log("Current balance:", balance / LAMPORTS_PER_SOL, "SOL");
   if (balance < 0.5 * LAMPORTS_PER_SOL) {
-    console.warn("Low balance. Use `solana airdrop 2` on devnet before continuing.");
+    console.warn("Warning: low balance. Ensure you have enough SOL for fees.");
   }
 
   console.log("Creating new SPL token mint...");
-  const mint = await createMint(
-    connection,
-    payer,
-    payer.publicKey,
-    null,
-    9
-  );
-
+  const mint = await createMint(connection, payer, payer.publicKey, null, 9);
   console.log("Mint address:", mint.toBase58());
 
+  // Create on-chain Metaplex metadata
+  console.log("Creating on-chain metadata...");
+  const metadataPDA = deriveMetadataPDA(mint);
+  const metadataIx = createCreateMetadataAccountV3Instruction(
+    {
+      metadata: metadataPDA,
+      mint,
+      mintAuthority: payer.publicKey,
+      payer: payer.publicKey,
+      updateAuthority: payer.publicKey,
+    },
+    {
+      createMetadataAccountArgsV3: {
+        data: {
+          name: "DamoCoin",
+          symbol: "DAMO",
+          uri: metadataUri,
+          sellerFeeBasisPoints: 0,
+          creators: null,
+          collection: null,
+          uses: null,
+        },
+        isMutable: true,
+        collectionDetails: null,
+      },
+    }
+  );
+
+  const tx = new Transaction().add(metadataIx);
+  await sendAndConfirmTransaction(connection, tx, [payer]);
+  console.log("On-chain metadata created. PDA:", metadataPDA.toBase58());
+
+  // Mint initial supply
   const payerTokenAccount = await getOrCreateAssociatedTokenAccount(
     connection,
     payer,
     mint,
     payer.publicKey
   );
-
   console.log("Associated token account:", payerTokenAccount.address.toBase58());
 
-  const initialSupply = BigInt(1000) * BigInt(10 ** 9);
-  await mintTo(
-    connection,
-    payer,
-    mint,
-    payerTokenAccount.address,
-    payer,
-    initialSupply
-  );
+  const initialSupply = BigInt(1_000_000_000) * BigInt(10 ** 9);
+  await mintTo(connection, payer, mint, payerTokenAccount.address, payer, initialSupply);
+  console.log("Minted initial supply:", (initialSupply / BigInt(10 ** 9)).toString(), "DAMO");
 
-  console.log("Minted initial supply:", initialSupply.toString(), "units");
-  console.log("\n🎉 DamoCoin successfully created on mainnet!");
-  console.log("📊 Summary:");
-  console.log("  Mint address: " + mint.toBase58());
-  console.log("  Token account: " + payerTokenAccount.address.toBase58());
-  console.log("  Initial supply: " + (initialSupply / BigInt(10 ** 9)).toString() + " billion tokens");
-  console.log("\n✅ Your DamoCoin is ready to use!\n");
+  console.log("\nDamoCoin successfully created!");
+  console.log("  Mint address:   ", mint.toBase58());
+  console.log("  Token account:  ", payerTokenAccount.address.toBase58());
+  console.log("  Metadata PDA:   ", metadataPDA.toBase58());
+  console.log("  Metadata URI:   ", metadataUri);
+  console.log("  Initial supply: 1,000,000,000 DAMO\n");
 }
 
 main().catch((err) => {

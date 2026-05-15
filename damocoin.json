@@ -1,17 +1,17 @@
 {
   "name": "DamoCoin",
-  "symbol": "DMCN",
-  "description": "DamoCoin is a custom Solana SPL token created for demonstration on devnet.",
-  "image": "https://placekitten.com/512/512",
+  "symbol": "DAMO",
+  "description": "DamoCoin is a custom Solana SPL token created on Solana Mainnet.",
+  "image": "https://damo333.github.io/damocoin/damocoin-logo.svg",
   "seller_fee_basis_points": 0,
-  "external_url": "https://example.com/damocoin",
+  "external_url": "https://damo333.github.io/damocoin/",
   "attributes": [
     { "trait_type": "Category", "value": "Utility" },
-    { "trait_type": "Network", "value": "Solana Devnet" }
+    { "trait_type": "Network", "value": "Solana Mainnet" }
   ],
   "properties": {
     "files": [
-      { "uri": "https://placekitten.com/512/512", "type": "image/png" }
+      { "uri": "https://damo333.github.io/damocoin/damocoin-logo.svg", "type": "image/svg+xml" }
     ],
     "category": "image"
   }
