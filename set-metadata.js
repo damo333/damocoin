@@ -25,16 +25,16 @@ import pkg from "@metaplex-foundation/mpl-token-metadata";
 const {
   createCreateMetadataAccountV3Instruction,
   createUpdateMetadataAccountV2Instruction,
-  MPL_TOKEN_METADATA_PROGRAM_ID: PROGRAM_ID_STR,
+  PROGRAM_ID: METADATA_PROGRAM_ID_RAW,
 } = pkg;
 
 const MINT_ADDRESS = "CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx";
 const DEFAULT_METADATA_URI = "https://damo333.github.io/damocoin/damocoin.json";
 
 const MPL_TOKEN_METADATA_PROGRAM_ID =
-  typeof PROGRAM_ID_STR === "string"
-    ? new PublicKey(PROGRAM_ID_STR)
-    : PROGRAM_ID_STR;
+  typeof METADATA_PROGRAM_ID_RAW === "string"
+    ? new PublicKey(METADATA_PROGRAM_ID_RAW)
+    : METADATA_PROGRAM_ID_RAW;
 
 function readKeypairFromFile(filePath) {
   const secretKey = JSON.parse(fs.readFileSync(filePath, "utf8"));

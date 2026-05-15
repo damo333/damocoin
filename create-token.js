@@ -17,13 +17,13 @@ import {
 import pkg from "@metaplex-foundation/mpl-token-metadata";
 const {
   createCreateMetadataAccountV3Instruction,
-  MPL_TOKEN_METADATA_PROGRAM_ID: PROGRAM_ID_STR,
+  PROGRAM_ID: METADATA_PROGRAM_ID_RAW,
 } = pkg;
 
 const MPL_TOKEN_METADATA_PROGRAM_ID =
-  typeof PROGRAM_ID_STR === "string"
-    ? new PublicKey(PROGRAM_ID_STR)
-    : PROGRAM_ID_STR;
+  typeof METADATA_PROGRAM_ID_RAW === "string"
+    ? new PublicKey(METADATA_PROGRAM_ID_RAW)
+    : METADATA_PROGRAM_ID_RAW;
 
 function readKeypairFromFile(filePath) {
   const secretKey = JSON.parse(fs.readFileSync(filePath, "utf8"));
