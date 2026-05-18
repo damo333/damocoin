@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DamoCoin (DAMO) — Solana Token</title>
+  <meta name="description" content="DamoCoin (DAMO) is a Solana SPL token live on Mainnet. Trade on Raydium, track on DexScreener, open-source on GitHub." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DamoCoin (DAMO) — Solana Token" />
+  <meta property="og:description" content="DamoCoin (DAMO) is a Solana SPL token live on Mainnet. Trade on Raydium, track on DexScreener, open-source on GitHub." />
+  <meta property="og:image" content="https://damo333.github.io/damocoin/damocoin-banner.png" />
+  <meta property="og:url" content="https://damo333.github.io/damocoin/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@DamoCoin" />
+  <meta name="twitter:title" content="DamoCoin (DAMO) — Solana Token" />
+  <meta name="twitter:description" content="DamoCoin (DAMO) is a Solana SPL token live on Mainnet. Trade on Raydium, open-source on GitHub." />
+  <meta name="twitter:image" content="https://damo333.github.io/damocoin/damocoin-banner.png" />
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLD7JTJ2VK"></script>
   <script>
@@ -12,62 +28,65 @@
     gtag('js', new Date());
     gtag('config', 'G-MLD7JTJ2VK');
   </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0a0e1a;
-      --surface:   #111827;
-      --border:    #1f2d45;
-      --accent:    #3b82f6;
-      --accent2:   #8b5cf6;
-      --gold:      #f59e0b;
-      --text:      #f1f5f9;
-      --muted:     #94a3b8;
-      --green:     #22c55e;
-      --red:       #ef4444;
+      --bg:      #0a0e1a;
+      --surface: #111827;
+      --border:  #1f2d45;
+      --accent:  #3b82f6;
+      --accent2: #8b5cf6;
+      --gold:    #f59e0b;
+      --text:    #f1f5f9;
+      --muted:   #94a3b8;
+      --green:   #22c55e;
+      --red:     #ef4444;
     }
 
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
     /* ── NAV ── */
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 32px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(10,14,26,0.85);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; border-bottom: 1px solid var(--border);
+      background: rgba(10,14,26,0.9); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; text-decoration: none; color: var(--text); }
     .nav-logo img { width: 32px; height: 32px; border-radius: 50%; }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; white-space: nowrap; }
     .nav-links a:hover { color: var(--text); }
+    .nav-buy { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff !important; padding: 8px 16px; border-radius: 8px; font-weight: 600 !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+    .mobile-menu {
+      display: none; flex-direction: column; gap: 0;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 8px 0;
+    }
+    .mobile-menu a { color: var(--muted); text-decoration: none; padding: 12px 24px; font-size: 0.95rem; border-bottom: 1px solid var(--border); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu.open { display: flex; }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      nav { padding: 14px 16px; }
+    }
 
     /* ── HERO ── */
     .hero {
-      text-align: center;
-      padding: 80px 24px 60px;
+      text-align: center; padding: 80px 24px 60px;
       background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.15) 0%, transparent 70%);
     }
-    .hero-logo {
-      width: 96px; height: 96px; border-radius: 50%;
-      margin: 0 auto 24px;
-      box-shadow: 0 0 40px rgba(59,130,246,0.4);
-    }
+    .hero-logo { width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 24px; box-shadow: 0 0 40px rgba(59,130,246,0.4); }
     .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -1px; }
     .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .hero p { color: var(--muted); margin-top: 12px; font-size: 1.1rem; max-width: 480px; margin-inline: auto; }
+    .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
 
     .badge {
       display: inline-flex; align-items: center; gap: 6px;
@@ -78,91 +97,76 @@
     .badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.3; } }
 
-    /* ── LIVE STATS ── */
+    /* ── STATS ── */
     .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      max-width: 900px;
-      margin: 48px auto 0;
-      padding: 0 24px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px; max-width: 960px; margin: 48px auto 0; padding: 0 24px;
     }
     .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 20px;
-      text-align: center;
-      transition: border-color .2s;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px 20px; text-align: center; transition: border-color .2s;
     }
     .stat-card:hover { border-color: var(--accent); }
-    .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
-    .stat-value { font-size: 1.6rem; font-weight: 700; color: var(--text); }
+    .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; }
     .stat-value.up { color: var(--green); }
     .stat-value.down { color: var(--red); }
     .stat-value.loading { color: var(--muted); font-size: 1rem; }
 
-    /* ── CHART ── */
-    .section { max-width: 900px; margin: 60px auto 0; padding: 0 24px; }
+    /* ── SECTIONS ── */
+    .section { max-width: 960px; margin: 64px auto 0; padding: 0 24px; }
     .section-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; }
 
-    .chart-wrap {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      height: 480px;
-    }
+    /* ── CHART ── */
+    .chart-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); height: 480px; }
     .chart-wrap iframe { width: 100%; height: 100%; border: none; }
 
     /* ── TOKEN INFO ── */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .info-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-    }
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
     .info-card h3 { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
-    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; gap: 12px; }
     .info-row:last-child { border-bottom: none; }
-    .info-row span:first-child { color: var(--muted); }
-    .info-row span:last-child { font-weight: 600; font-family: monospace; font-size: 0.85rem; }
+    .info-row span:first-child { color: var(--muted); white-space: nowrap; }
+    .info-row .val { font-weight: 600; text-align: right; }
     .copy-btn {
-      background: none; border: none; color: var(--muted); cursor: pointer;
-      font-size: 0.8rem; padding: 2px 6px; border-radius: 4px;
-      transition: color .2s, background .2s;
+      background: none; border: 1px solid var(--border); color: var(--muted); cursor: pointer;
+      font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; transition: color .2s, background .2s; white-space: nowrap;
     }
     .copy-btn:hover { color: var(--text); background: var(--border); }
+    .addr { font-family: monospace; font-size: 0.8rem; color: var(--accent); }
 
     /* ── HOW TO BUY ── */
     .steps { display: flex; flex-direction: column; gap: 16px; }
-    .step {
-      display: flex; gap: 16px; align-items: flex-start;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 20px 24px;
-    }
-    .step-num {
-      min-width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 0.9rem;
-    }
+    .step { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 24px; }
+    .step-num { min-width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
     .step-body h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    .step-body p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+    .step-body p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
     .step-body a { color: var(--accent); text-decoration: none; }
     .step-body a:hover { text-decoration: underline; }
+
+    /* ── FAQ ── */
+    .faq { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 24px; cursor: pointer; font-weight: 600; font-size: 0.95rem;
+      transition: background .2s;
+    }
+    .faq-q:hover { background: rgba(255,255,255,0.03); }
+    .faq-q::after { content: '+'; font-size: 1.3rem; color: var(--muted); transition: transform .2s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 24px 18px; color: var(--muted); font-size: 0.9rem; line-height: 1.7; border-top: 1px solid var(--border); padding-top: 16px; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a a { color: var(--accent); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
 
     /* ── BUTTONS ── */
     .btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 48px; padding: 0 24px; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border-radius: 12px;
-      font-weight: 600; font-size: 0.9rem; text-decoration: none;
-      transition: opacity .2s, transform .15s;
+      padding: 12px 24px; border-radius: 12px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: opacity .2s, transform .15s;
     }
     .btn:hover { opacity: .85; transform: translateY(-1px); }
     .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
@@ -170,43 +174,55 @@
 
     /* ── FOOTER ── */
     footer {
-      text-align: center; padding: 48px 24px 32px;
-      color: var(--muted); font-size: 0.85rem; margin-top: 80px;
-      border-top: 1px solid var(--border);
+      text-align: center; padding: 48px 24px 32px; color: var(--muted);
+      font-size: 0.85rem; margin-top: 80px; border-top: 1px solid var(--border);
     }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
-
-    @media (max-width: 600px) {
-      nav { padding: 14px 16px; }
-      .nav-links { gap: 16px; }
-      .hero { padding: 60px 16px 40px; }
-    }
+    .footer-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 16px; }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">
+    <a class="nav-logo" href="#">
       <img src="damocoin-logo.svg" alt="DAMO logo" />
       DamoCoin
-    </div>
+    </a>
     <div class="nav-links">
       <a href="#stats">Stats</a>
       <a href="#chart">Chart</a>
       <a href="#buy">How to Buy</a>
-      <a href="#info">Token Info</a>
+      <a href="#faq">FAQ</a>
       <a href="tokenomics.html">Tokenomics</a>
+      <a class="nav-buy" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">Buy DAMO</a>
     </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#stats" onclick="closeMenu()">Stats</a>
+    <a href="#chart" onclick="closeMenu()">Chart</a>
+    <a href="#buy" onclick="closeMenu()">How to Buy</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="tokenomics.html">Tokenomics</a>
+    <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">Buy DAMO on Raydium</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
     <img class="hero-logo" src="damocoin-logo.svg" alt="DamoCoin" />
     <h1><span>DamoCoin</span></h1>
-    <p>A custom SPL token on Solana Mainnet — fast, low-cost, and live on Raydium.</p>
+    <p>A Solana SPL token — live on Mainnet, trading on Raydium, open-source on GitHub.</p>
     <div class="badge">Live on Solana Mainnet</div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">⬡ Buy DAMO on Raydium</a>
+      <a class="btn btn-outline" href="https://dexscreener.com/solana/GGRNczYRPvLbHty4g4mnUhv158dr9GdKr5Yt86bgvQyX" target="_blank">📈 View Chart</a>
+    </div>
   </section>
 
   <!-- LIVE STATS -->
@@ -220,6 +236,10 @@
       <div class="stat-value loading" id="stat-change">Loading…</div>
     </div>
     <div class="stat-card">
+      <div class="stat-label">Market Cap</div>
+      <div class="stat-value loading" id="stat-mcap">Loading…</div>
+    </div>
+    <div class="stat-card">
       <div class="stat-label">24h Volume</div>
       <div class="stat-value loading" id="stat-volume">Loading…</div>
     </div>
@@ -231,10 +251,6 @@
       <div class="stat-label">Total Supply</div>
       <div class="stat-value">1B</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-label">Decimals</div>
-      <div class="stat-value">9</div>
-    </div>
   </div>
 
   <!-- CHART -->
@@ -242,8 +258,8 @@
     <div class="section-title">Live Chart</div>
     <div class="chart-wrap">
       <iframe
-        src="https://dexscreener.com/solana/GGRNczYRPvLbHty4g4mnUhv158dr9GdKr5Yt86bgvQyX?embed=1&theme=dark&trades=0&info=0"
-        title="DamoCoin chart"
+        src="https://dexscreener.com/solana/GGRNczYRPvLbHty4g4mnUhv158dr9GdKr5Yt86bgvQyX?embed=1&theme=dark&trades=1&info=0"
+        title="DamoCoin chart" loading="lazy"
       ></iframe>
     </div>
   </div>
@@ -256,7 +272,7 @@
         <div class="step-num">1</div>
         <div class="step-body">
           <h4>Get a Solana wallet</h4>
-          <p>Download <a href="https://phantom.app" target="_blank">Phantom</a> or <a href="https://solflare.com" target="_blank">Solflare</a> and create a wallet. Keep your seed phrase safe.</p>
+          <p>Download <a href="https://phantom.app" target="_blank">Phantom</a> or <a href="https://solflare.com" target="_blank">Solflare</a> and create a wallet. Keep your seed phrase safe — never share it with anyone.</p>
         </div>
       </div>
       <div class="step">
@@ -269,15 +285,19 @@
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h4>Swap for DAMO on Raydium</h4>
-          <p>Go to <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">Raydium</a>, connect your wallet, and swap SOL for DAMO. Mint address: <code style="font-size:0.75rem; color: var(--accent)">CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx</code></p>
+          <h4>Swap SOL for DAMO on Raydium</h4>
+          <p>Go to <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">Raydium</a>, connect your wallet, and swap SOL for DAMO. If DAMO doesn't appear automatically, paste the mint address:
+          <br/><br/>
+          <span class="addr">CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx</span>
+          <button class="copy-btn" style="margin-left:8px" onclick="copy('CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx', this)">Copy</button>
+          </p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">4</div>
         <div class="step-body">
-          <h4>DAMO is in your wallet</h4>
-          <p>Your wallet will display DAMO automatically. If it doesn't appear, import the token using the mint address above.</p>
+          <h4>DAMO appears in your wallet</h4>
+          <p>Your wallet will display DAMO with the name and logo automatically thanks to on-chain Metaplex metadata. You're done!</p>
         </div>
       </div>
     </div>
@@ -289,61 +309,100 @@
     <div class="info-grid">
       <div class="info-card">
         <h3>Details</h3>
-        <div class="info-row"><span>Name</span><span>DamoCoin</span></div>
-        <div class="info-row"><span>Symbol</span><span>DAMO</span></div>
-        <div class="info-row"><span>Network</span><span>Solana Mainnet</span></div>
-        <div class="info-row"><span>Decimals</span><span>9</span></div>
-        <div class="info-row"><span>Total Supply</span><span>1,000,000,000</span></div>
+        <div class="info-row"><span>Name</span><span class="val">DamoCoin</span></div>
+        <div class="info-row"><span>Symbol</span><span class="val">DAMO</span></div>
+        <div class="info-row"><span>Network</span><span class="val">Solana Mainnet</span></div>
+        <div class="info-row"><span>Decimals</span><span class="val">9</span></div>
+        <div class="info-row"><span>Total Supply</span><span class="val">1,000,000,000</span></div>
+        <div class="info-row"><span>Tokenomics</span><span class="val"><a href="tokenomics.html" style="color:var(--accent)">View →</a></span></div>
       </div>
       <div class="info-card">
         <h3>Addresses</h3>
         <div class="info-row">
           <span>Mint</span>
-          <span>
-            CuhkVj1P…K6Xmx
+          <span class="val">
+            <span class="addr">CuhkVj1P…K6Xmx</span>
             <button class="copy-btn" onclick="copy('CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx', this)">Copy</button>
           </span>
         </div>
         <div class="info-row">
           <span>Pool</span>
-          <span>
-            GGRNczYR…vQyX
+          <span class="val">
+            <span class="addr">GGRNczYR…vQyX</span>
             <button class="copy-btn" onclick="copy('GGRNczYRPvLbHty4g4mnUhv158dr9GdKr5Yt86bgvQyX', this)">Copy</button>
           </span>
         </div>
+        <div class="info-row">
+          <span>Explorer</span>
+          <span class="val"><a href="https://explorer.solana.com/address/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank" style="color:var(--accent)">View →</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <div class="section-title">FAQ</div>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is DamoCoin?</div>
+        <div class="faq-a">DamoCoin (DAMO) is a custom SPL token deployed on Solana Mainnet. It was built using the Solana Web3.js library and the SPL Token program, with on-chain metadata registered via the Metaplex standard. The complete source code is available on <a href="https://github.com/damo333/damocoin" target="_blank">GitHub</a>.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Where can I buy DAMO?</div>
+        <div class="faq-a">DAMO is available on <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">Raydium</a>. Connect your Phantom or Solflare wallet and swap SOL for DAMO. See the How to Buy section above for step-by-step instructions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the total supply?</div>
+        <div class="faq-a">The total supply is 1,000,000,000 DAMO (1 billion). The supply is fixed — no new tokens can be minted. Full tokenomics are available on the <a href="tokenomics.html">Tokenomics page</a>.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Was there a presale or ICO?</div>
+        <div class="faq-a">No. There was no presale, private sale, or ICO. All tokens were minted to the creator wallet at launch. A portion was deposited into the Raydium liquidity pool to enable trading.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Which wallets support DAMO?</div>
+        <div class="faq-a">Any Solana-compatible wallet supports DAMO, including <a href="https://phantom.app" target="_blank">Phantom</a> and <a href="https://solflare.com" target="_blank">Solflare</a>. Thanks to on-chain Metaplex metadata, the token appears with its name and logo automatically.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is the project open source?</div>
+        <div class="faq-a">Yes. The complete source code including token creation scripts, metadata setup, and this website is publicly available on <a href="https://github.com/damo333/damocoin" target="_blank">GitHub</a>.</div>
       </div>
     </div>
   </div>
 
   <!-- BUTTONS -->
   <div class="btn-row">
-    <a class="btn btn-primary" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">
-      ⬡ Buy on Raydium
-    </a>
-    <a class="btn btn-outline" href="https://dexscreener.com/solana/GGRNczYRPvLbHty4g4mnUhv158dr9GdKr5Yt86bgvQyX" target="_blank">
-      📈 DexScreener
-    </a>
-    <a class="btn btn-outline" href="https://explorer.solana.com/address/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">
-      🔍 Explorer
-    </a>
-    <a class="btn btn-outline" href="https://twitter.com/DamoCoin" target="_blank">
-      𝕏 Twitter
-    </a>
-    <a class="btn btn-outline" href="https://github.com/damo333/damocoin" target="_blank">
-      GitHub
-    </a>
+    <a class="btn btn-primary" href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">⬡ Buy on Raydium</a>
+    <a class="btn btn-outline" href="https://dexscreener.com/solana/GGRNczYRPvLbHty4g4mnUhv158dr9GdKr5Yt86bgvQyX" target="_blank">📈 DexScreener</a>
+    <a class="btn btn-outline" href="https://explorer.solana.com/address/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">🔍 Explorer</a>
+    <a class="btn btn-outline" href="https://twitter.com/DamoCoin" target="_blank">𝕏 Twitter</a>
+    <a class="btn btn-outline" href="https://github.com/damo333/damocoin" target="_blank">GitHub</a>
   </div>
 
   <!-- FOOTER -->
   <footer>
+    <div class="footer-links">
+      <a href="#">Home</a>
+      <a href="tokenomics.html">Tokenomics</a>
+      <a href="https://twitter.com/DamoCoin" target="_blank">Twitter</a>
+      <a href="https://github.com/damo333/damocoin" target="_blank">GitHub</a>
+      <a href="https://dexscreener.com/solana/GGRNczYRPvLbHty4g4mnUhv158dr9GdKr5Yt86bgvQyX" target="_blank">DexScreener</a>
+      <a href="https://explorer.solana.com/address/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank">Explorer</a>
+    </div>
     <p>© 2026 DamoCoin · Built on <a href="https://solana.com" target="_blank">Solana</a> · Created by <a href="https://github.com/damo333" target="_blank">damo333</a></p>
-    <p style="margin-top:8px; font-size:0.75rem;">
-      Mint: <code>CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx</code>
-    </p>
+    <p style="margin-top:8px; font-size:0.75rem; color: var(--border);">Mint: CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx</p>
   </footer>
 
   <script>
-    // Live stats from DexScreener
+    // Mobile menu
+    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // FAQ accordion
+    function toggleFaq(el) { el.closest('.faq-item').classList.toggle('open'); }
+
+    // Live stats
     async function loadStats() {
       try {
         const res = await fetch('https://api.dexscreener.com/latest/dex/tokens/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx');
@@ -355,29 +414,28 @@
         const change = parseFloat(pair.priceChange?.h24 ?? 0);
         const volume = parseFloat(pair.volume?.h24 ?? 0);
         const liquidity = parseFloat(pair.liquidity?.usd ?? 0);
+        const mcap = parseFloat(pair.fdv ?? price * 1_000_000_000);
 
-        const fmt = (n, decimals = 4) =>
+        const fmt = (n, d = 2) =>
           n >= 1e6 ? `$${(n/1e6).toFixed(2)}M` :
           n >= 1e3 ? `$${(n/1e3).toFixed(1)}K` :
-          `$${n.toFixed(decimals)}`;
+          `$${n.toFixed(d)}`;
 
-        document.getElementById('stat-price').textContent = fmt(price);
-        document.getElementById('stat-price').classList.remove('loading');
+        const set = (id, val, cls) => {
+          const el = document.getElementById(id);
+          el.textContent = val;
+          el.className = 'stat-value' + (cls ? ' ' + cls : '');
+        };
 
-        const changeEl = document.getElementById('stat-change');
-        changeEl.textContent = `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
-        changeEl.classList.remove('loading');
-        changeEl.classList.add(change >= 0 ? 'up' : 'down');
-
-        document.getElementById('stat-volume').textContent = fmt(volume, 2);
-        document.getElementById('stat-volume').classList.remove('loading');
-
-        document.getElementById('stat-liquidity').textContent = fmt(liquidity, 2);
-        document.getElementById('stat-liquidity').classList.remove('loading');
-
+        set('stat-price', fmt(price, 4));
+        set('stat-change', `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`, change >= 0 ? 'up' : 'down');
+        set('stat-mcap', fmt(mcap));
+        set('stat-volume', fmt(volume));
+        set('stat-liquidity', fmt(liquidity));
       } catch (e) {
-        ['stat-price','stat-change','stat-volume','stat-liquidity'].forEach(id => {
+        ['stat-price','stat-change','stat-mcap','stat-volume','stat-liquidity'].forEach(id => {
           document.getElementById(id).textContent = '—';
+          document.getElementById(id).className = 'stat-value';
         });
       }
     }
@@ -385,14 +443,14 @@
     // Copy to clipboard
     function copy(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
-        const original = btn.textContent;
+        const orig = btn.textContent;
         btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = original, 1500);
+        setTimeout(() => btn.textContent = orig, 1500);
       });
     }
 
     loadStats();
-    setInterval(loadStats, 30000); // refresh every 30s
+    setInterval(loadStats, 30000);
   </script>
 </body>
 </html>

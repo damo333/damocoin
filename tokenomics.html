@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DamoCoin Tokenomics</title>
+  <title>DamoCoin (DAMO) Tokenomics — Supply & Distribution</title>
+  <meta name="description" content="DamoCoin (DAMO) tokenomics — 1 billion fixed supply, no presale, no vesting. Full breakdown of token distribution and allocation." />
+  <meta property="og:title" content="DamoCoin Tokenomics" />
+  <meta property="og:description" content="1B fixed supply. No presale. No vesting. Full breakdown of DAMO token distribution." />
+  <meta property="og:image" content="https://damo333.github.io/damocoin/damocoin-banner.png" />
+  <meta property="og:url" content="https://damo333.github.io/damocoin/tokenomics.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@DamoCoin" />
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLD7JTJ2VK"></script>
   <script>
@@ -65,7 +72,8 @@
     .supply-label { color: var(--muted); margin-top: 8px; font-size: 0.95rem; }
 
     /* Distribution table */
-    .dist-table { width: 100%; border-collapse: collapse; }
+    .table-wrap { overflow-x: auto; }
+    .dist-table { width: 100%; border-collapse: collapse; min-width: 420px; }
     .dist-table th {
       text-align: left; padding: 10px 16px; font-size: 0.75rem;
       text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
@@ -116,6 +124,11 @@
       <img src="damocoin-logo.svg" alt="DAMO" />
       DamoCoin
     </a>
+    <div style="display:flex; gap:20px; align-items:center;">
+      <a href="index.html#buy" style="color:var(--muted); text-decoration:none; font-size:0.9rem;">How to Buy</a>
+      <a href="index.html#chart" style="color:var(--muted); text-decoration:none; font-size:0.9rem;">Chart</a>
+      <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx" target="_blank" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6); color:#fff; padding:8px 16px; border-radius:8px; font-size:0.9rem; font-weight:600; text-decoration:none;">Buy DAMO</a>
+    </div>
   </nav>
 
   <div class="hero">
@@ -138,7 +151,7 @@
     <div class="section">
       <h2>Token Distribution</h2>
       <div class="info-card">
-        <table class="dist-table">
+        <div class="table-wrap"><table class="dist-table">
           <thead>
             <tr>
               <th>Allocation</th>
@@ -167,7 +180,7 @@
               <td>Deposited into DAMO/SOL CLMM pool</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
         <div class="notice">
           There was no presale, no private sale, and no investor allocation. All tokens were minted to the creator wallet at launch. A portion was subsequently deposited into the Raydium liquidity pool to enable trading.
         </div>
