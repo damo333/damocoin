@@ -249,7 +249,7 @@
     </div>
     <div class="stat-card">
       <div class="stat-label">Total Supply</div>
-      <div class="stat-value">1B</div>
+      <div class="stat-value">~600</div>
     </div>
   </div>
 
@@ -313,7 +313,7 @@
         <div class="info-row"><span>Symbol</span><span class="val">DAMO</span></div>
         <div class="info-row"><span>Network</span><span class="val">Solana Mainnet</span></div>
         <div class="info-row"><span>Decimals</span><span class="val">9</span></div>
-        <div class="info-row"><span>Total Supply</span><span class="val">1,000,000,000</span></div>
+        <div class="info-row"><span>Total Supply</span><span class="val">~600 DAMO</span></div>
         <div class="info-row"><span>Tokenomics</span><span class="val"><a href="tokenomics.html" style="color:var(--accent)">View →</a></span></div>
       </div>
       <div class="info-card">
@@ -354,7 +354,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What is the total supply?</div>
-        <div class="faq-a">The total supply is 1,000,000,000 DAMO (1 billion). The supply is fixed — no new tokens can be minted. Full tokenomics are available on the <a href="tokenomics.html">Tokenomics page</a>.</div>
+        <div class="faq-a">The total supply is approximately 600 DAMO. The original supply of 1,000 was reduced by burning 400 DAMO on-chain. The supply is permanently fixed — mint authority has been revoked. Full tokenomics are available on the <a href="tokenomics.html">Tokenomics page</a>.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">Was there a presale or ICO?</div>
@@ -414,7 +414,7 @@
         const change = parseFloat(pair.priceChange?.h24 ?? 0);
         const volume = parseFloat(pair.volume?.h24 ?? 0);
         const liquidity = parseFloat(pair.liquidity?.usd ?? 0);
-        const mcap = parseFloat(pair.fdv ?? price * 1_000_000_000);
+        const mcap = parseFloat(pair.fdv ?? price * 600);
 
         const fmt = (n, d = 2) =>
           n >= 1e6 ? `$${(n/1e6).toFixed(2)}M` :
