@@ -341,10 +341,37 @@
     </div>
   </div>
 
+  <!-- NFT COLLECTION -->
+  <div class="section" id="nft">
+    <div class="section-title">Damo OG Collection</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;">
+      <img src="damocoin-logo.svg" alt="Damo OG NFT" style="width:120px;height:120px;border-radius:12px;box-shadow:0 0 32px rgba(59,130,246,0.3);flex-shrink:0;" />
+      <div style="flex:1;min-width:200px;">
+        <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">100 unique NFTs — 10 DAMO each</div>
+        <div style="color:var(--muted);font-size:0.95rem;margin-bottom:20px;line-height:1.6;">The Damo OG Collection rewards early DAMO holders. Each NFT is minted on Solana via Metaplex Candy Machine and costs 10 DAMO tokens. Hold DAMO, mint your OG pass.</div>
+        <a href="mint/" style="display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:0.95rem;">Mint Now →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:140px;">
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Supply</div>
+          <div style="font-size:1.3rem;font-weight:700;color:var(--gold);">100</div>
+        </div>
+        <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+          <div style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;">Price</div>
+          <div style="font-size:1.3rem;font-weight:700;color:var(--gold);">10 DAMO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FAQ -->
   <div class="section" id="faq">
     <div class="section-title">FAQ</div>
     <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the Damo OG Collection?</div>
+        <div class="faq-a">The Damo OG Collection is a set of 100 NFTs on Solana, available exclusively to DAMO holders. Each NFT costs 10 DAMO to mint via the <a href="mint/">mint page</a>. The collection is powered by Metaplex Candy Machine v3 with an on-chain token payment guard.</div>
+      </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">What is DamoCoin?</div>
         <div class="faq-a">DamoCoin (DAMO) is a custom SPL token deployed on Solana Mainnet. It was built using the Solana Web3.js library and the SPL Token program, with on-chain metadata registered via the Metaplex standard. The complete source code is available on <a href="https://github.com/damo333/damocoin" target="_blank">GitHub</a>.</div>
