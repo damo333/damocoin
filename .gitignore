@@ -11,3 +11,8 @@ id.json
 *.keypair.json
 banner.svg
 make-banner.js
+config.json
+/assets/
+generate-nfts.js
+make-dexscreener-header.js
+make-realms-banner.js
