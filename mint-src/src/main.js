@@ -14,6 +14,10 @@ import { publicKey, generateSigner, some, transactionBuilder } from '@metaplex-f
 const CANDY_MACHINE_ID = '5jCny4bDZPaU6X9e2avDFzmL2vukXHcontyAyT3W2ukt';
 const DAMO_MINT = 'CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx';
 const RPC = 'https://api.mainnet-beta.solana.com';
+const FALLBACK_RPCS = [
+  'https://api.mainnet-beta.solana.com',
+  'https://rpc.ankr.com/solana',
+];
 const CREATOR = 'DibC6reBiwRETsy7esXQ3fb15DbxvmrT8hQgLEvRbSqK';
 
 let umi;
@@ -54,26 +58,31 @@ async function loadCandyMachine() {
       mintBtn.disabled = true;
     }
   } catch (e) {
-    setStatus('Failed to load candy machine.', 'error');
+    candyMachine = undefined;
+    candyGuard = undefined;
   }
 }
 
 async function getDamoBalance(walletPubkey) {
-  try {
-    const res = await fetch(RPC, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        jsonrpc: '2.0', id: 1,
-        method: 'getTokenAccountsByOwner',
-        params: [walletPubkey, { mint: DAMO_MINT }, { encoding: 'jsonParsed' }]
-      })
-    });
-    const data = await res.json();
-    return data.result?.value?.[0]?.account?.data?.parsed?.info?.tokenAmount?.uiAmount ?? 0;
-  } catch {
-    return 0;
+  for (const rpc of FALLBACK_RPCS) {
+    try {
+      const res = await fetch(rpc, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0', id: 1,
+          method: 'getTokenAccountsByOwner',
+          params: [walletPubkey, { mint: DAMO_MINT }, { encoding: 'jsonParsed' }]
+        })
+      });
+      const data = await res.json();
+      if (data.error) continue;
+      return data.result?.value?.[0]?.account?.data?.parsed?.info?.tokenAmount?.uiAmount ?? 0;
+    } catch {
+      continue;
+    }
   }
+  throw new Error('Could not fetch DAMO balance — RPC unavailable. Try again.');
 }
 
 connectBtn.addEventListener('click', async () => {
@@ -87,16 +96,29 @@ connectBtn.addEventListener('click', async () => {
     connectBtn.textContent = address.slice(0, 4) + '…' + address.slice(-4);
     connectBtn.disabled = true;
 
-    const balance = await getDamoBalance(address);
-    balanceAmountEl.textContent = balance + ' DAMO';
-    balanceEl.style.display = 'block';
+    let balance = null;
+    try {
+      balance = await getDamoBalance(address);
+    } catch (e) {
+      // RPC unavailable — on-chain guard will enforce 10 DAMO requirement
+    }
 
     mintBtn.style.display = 'block';
-    mintBtn.disabled = balance < 10;
-    if (balance < 10) {
-      setStatus('You need at least 10 DAMO to mint.', 'error');
+
+    if (balance !== null) {
+      balanceAmountEl.textContent = balance + ' DAMO';
+      balanceEl.style.display = 'block';
+      mintBtn.disabled = balance < 10;
+      if (balance < 10) {
+        setStatus('You need at least 10 DAMO to mint.', 'error');
+      } else {
+        clearStatus();
+      }
     } else {
-      clearStatus();
+      balanceAmountEl.textContent = '— (unavailable)';
+      balanceEl.style.display = 'block';
+      mintBtn.disabled = false;
+      setStatus('Wallet connected. Balance check unavailable — 10 DAMO required on-chain.', 'loading');
     }
   } catch (e) {
     setStatus('Failed to connect wallet: ' + e.message, 'error');
@@ -107,6 +129,16 @@ mintBtn.addEventListener('click', async () => {
   try {
     mintBtn.disabled = true;
     setStatus('Minting… please approve in Phantom.', 'loading');
+
+    if (!candyMachine) {
+      setStatus('Loading candy machine…', 'loading');
+      await loadCandyMachine();
+    }
+    if (!candyMachine) {
+      setStatus('Could not load candy machine. Please refresh the page and try again.', 'error');
+      mintBtn.disabled = false;
+      return;
+    }
 
     const nftMint = generateSigner(umi);
 
