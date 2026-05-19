@@ -163,7 +163,10 @@ mintBtn.addEventListener('click', async () => {
         } : {},
       }));
 
-    await tx.sendAndConfirm(umi, { confirm: { commitment: 'confirmed' } });
+    await tx.sendAndConfirm(umi, {
+      send: { skipPreflight: true },
+      confirm: { commitment: 'confirmed' },
+    });
 
     const remaining = Number(candyMachine.data.itemsAvailable) - Number(candyMachine.itemsRedeemed) - 1;
     remainingEl.textContent = Math.max(0, remaining);
