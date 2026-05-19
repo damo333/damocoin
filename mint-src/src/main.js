@@ -12,7 +12,7 @@ import { setComputeUnitLimit, findAssociatedTokenPda } from '@metaplex-foundatio
 import { publicKey, generateSigner, some, transactionBuilder } from '@metaplex-foundation/umi';
 
 const CANDY_MACHINE_ID = '5jCny4bDZPaU6X9e2avDFzmL2vukXHcontyAyT3W2ukt';
-const DAMO_MINT = 'CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx';
+const DAMO_MINT = 'DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx';
 const RPC = 'https://mainnet.helius-rpc.com/?api-key=ce0b165e-e422-4d7a-a1d5-3e83c667f953';
 const FALLBACK_RPCS = [
   'https://mainnet.helius-rpc.com/?api-key=ce0b165e-e422-4d7a-a1d5-3e83c667f953',
