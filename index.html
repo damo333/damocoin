@@ -451,13 +451,21 @@
           n >= 1e3 ? `$${(n/1e3).toFixed(1)}K` :
           `$${n.toFixed(d)}`;
 
+        const fmtPrice = (n) => {
+          if (n >= 1)        return `$${n.toFixed(2)}`;
+          if (n >= 0.01)     return `$${n.toFixed(4)}`;
+          if (n >= 0.0001)   return `$${n.toFixed(6)}`;
+          if (n >= 0.000001) return `$${n.toFixed(8)}`;
+          return `$${n.toFixed(10)}`;
+        };
+
         const set = (id, val, cls) => {
           const el = document.getElementById(id);
           el.textContent = val;
           el.className = 'stat-value' + (cls ? ' ' + cls : '');
         };
 
-        set('stat-price', fmt(price, 4));
+        set('stat-price', fmtPrice(price));
         set('stat-change', `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`, change >= 0 ? 'up' : 'down');
         set('stat-mcap', fmt(mcap));
         set('stat-volume', fmt(volume));
