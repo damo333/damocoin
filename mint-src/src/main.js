@@ -13,10 +13,10 @@ import { publicKey, generateSigner, some, transactionBuilder } from '@metaplex-f
 
 const CANDY_MACHINE_ID = '5jCny4bDZPaU6X9e2avDFzmL2vukXHcontyAyT3W2ukt';
 const DAMO_MINT = 'CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx';
-const RPC = 'https://api.mainnet-beta.solana.com';
+const RPC = 'https://mainnet.helius-rpc.com/?api-key=ce0b165e-e422-4d7a-a1d5-3e83c667f953';
 const FALLBACK_RPCS = [
+  'https://mainnet.helius-rpc.com/?api-key=ce0b165e-e422-4d7a-a1d5-3e83c667f953',
   'https://api.mainnet-beta.solana.com',
-  'https://rpc.ankr.com/solana',
 ];
 const CREATOR = 'DibC6reBiwRETsy7esXQ3fb15DbxvmrT8hQgLEvRbSqK';
 
