@@ -1,0 +1,17 @@
+{
+  "name": "DamoCoin",
+  "symbol": "DAMO",
+  "description": "DamoCoin (DAMO) is a Solana SPL token. Trade on Raydium, mint Damo OG NFTs, join the community on Discord.",
+  "image": "https://damo333.github.io/damocoin/damocoin-logo.svg",
+  "external_url": "https://damo333.github.io/damocoin/",
+  "attributes": [],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://damo333.github.io/damocoin/damocoin-logo.svg",
+        "type": "image/svg+xml"
+      }
+    ],
+    "category": "fungible"
+  }
+}
