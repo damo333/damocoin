@@ -170,22 +170,31 @@ mintBtn.addEventListener('click', async () => {
       .build(umi);
 
     // Pre-simulate with sigVerify:false before asking Phantom to sign.
-    // Phantom Lighthouse flags transactions whose simulation fails — catching
-    // on-chain errors here first prevents the "malicious dApp" warning.
+    // Phantom Lighthouse flags transactions whose simulation fails — if we
+    // confirm the tx will succeed here, Phantom's internal simulation will
+    // also pass and the "malicious dApp" warning won't fire.
     try {
-      const sim = await umi.rpc.simulateTransaction(builtTx, {
-        commitment: 'confirmed',
-        sigVerify: false,
+      const serialized = umi.transactions.serialize(builtTx);
+      const base64Tx = Buffer.from(serialized).toString('base64');
+      const simRes = await fetch(RPC, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0', id: 1,
+          method: 'simulateTransaction',
+          params: [base64Tx, { sigVerify: false, commitment: 'confirmed', encoding: 'base64' }],
+        }),
       });
-      if (sim.err) {
-        const logs = sim.logs?.join('\n') ?? '';
-        if (logs.includes('insufficient funds') || logs.includes('tokenPayment')) {
+      const simData = await simRes.json();
+      if (simData.result?.value?.err) {
+        const logs = (simData.result.value.logs ?? []).join('\n');
+        if (logs.includes('NotEnoughTokens') || logs.includes('tokenPayment') || logs.includes('insufficient')) {
           throw new Error('Insufficient DAMO balance to mint.');
         }
-        throw new Error('Transaction would fail on-chain: ' + JSON.stringify(sim.err));
+        throw new Error('Mint would fail on-chain: ' + JSON.stringify(simData.result.value.err));
       }
     } catch (simErr) {
-      if (simErr.message.startsWith('Insufficient') || simErr.message.startsWith('Transaction would fail')) {
+      if (simErr.message.startsWith('Insufficient') || simErr.message.startsWith('Mint would fail')) {
         throw simErr;
       }
       console.warn('Pre-simulation skipped:', simErr.message);
