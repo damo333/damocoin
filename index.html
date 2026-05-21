@@ -105,13 +105,15 @@
     .stat-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 16px; padding: 24px 20px; text-align: center; transition: border-color .2s;
+      min-width: 0; overflow: hidden;
     }
     .stat-card:hover { border-color: var(--accent); }
     .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
-    .stat-value { font-size: 1.5rem; font-weight: 700; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; overflow-wrap: break-word; word-break: break-all; }
     .stat-value.up { color: var(--green); }
     .stat-value.down { color: var(--red); }
     .stat-value.loading { color: var(--muted); font-size: 1rem; }
+    #stat-price { font-size: 1.1rem; }
 
     /* ── SECTIONS ── */
     .section { max-width: 960px; margin: 64px auto 0; padding: 0 24px; }
@@ -461,8 +463,8 @@
           if (n >= 1)        return `$${n.toFixed(2)}`;
           if (n >= 0.01)     return `$${n.toFixed(4)}`;
           if (n >= 0.0001)   return `$${n.toFixed(6)}`;
-          if (n >= 0.000001) return `$${n.toFixed(8)}`;
-          return `$${n.toFixed(10)}`;
+          if (n >= 0.000001) return `$${parseFloat(n.toFixed(8))}`;
+          return `$${parseFloat(n.toFixed(10))}`;
         };
 
         const set = (id, val, cls) => {
