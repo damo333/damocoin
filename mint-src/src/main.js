@@ -169,6 +169,28 @@ mintBtn.addEventListener('click', async () => {
       .setBlockhash(blockhash)
       .build(umi);
 
+    // Pre-simulate with sigVerify:false before asking Phantom to sign.
+    // Phantom Lighthouse flags transactions whose simulation fails — catching
+    // on-chain errors here first prevents the "malicious dApp" warning.
+    try {
+      const sim = await umi.rpc.simulateTransaction(builtTx, {
+        commitment: 'confirmed',
+        sigVerify: false,
+      });
+      if (sim.err) {
+        const logs = sim.logs?.join('\n') ?? '';
+        if (logs.includes('insufficient funds') || logs.includes('tokenPayment')) {
+          throw new Error('Insufficient DAMO balance to mint.');
+        }
+        throw new Error('Transaction would fail on-chain: ' + JSON.stringify(sim.err));
+      }
+    } catch (simErr) {
+      if (simErr.message.startsWith('Insufficient') || simErr.message.startsWith('Transaction would fail')) {
+        throw simErr;
+      }
+      console.warn('Pre-simulation skipped:', simErr.message);
+    }
+
     // Phantom signs first (per Phantom Lighthouse requirements)
     builtTx = await umi.identity.signTransaction(builtTx);
     // nftMint keypair signs second
