@@ -147,7 +147,8 @@ mintBtn.addEventListener('click', async () => {
       owner: publicKey(CREATOR),
     });
 
-    let tx = transactionBuilder()
+    // Build transaction without signing
+    let builtTx = await transactionBuilder()
       .add(setComputeUnitLimit(umi, { units: 800_000 }))
       .add(mintV2(umi, {
         candyMachine: candyMachine.publicKey,
@@ -161,11 +162,20 @@ mintBtn.addEventListener('click', async () => {
             destinationAta: creatorAta,
           }),
         } : {},
-      }));
+      }))
+      .build(umi);
 
-    await tx.sendAndConfirm(umi, {
-      send: { skipPreflight: true },
-      confirm: { commitment: 'confirmed' },
+    // Phantom signs first (per Phantom Lighthouse requirements)
+    builtTx = await umi.identity.signTransaction(builtTx);
+    // nftMint keypair signs second
+    builtTx = await nftMint.signTransaction(builtTx);
+
+    // Send pre-signed transaction and confirm
+    const blockhash = await umi.rpc.getLatestBlockhash();
+    const signature = await umi.rpc.sendTransaction(builtTx, { skipPreflight: true });
+    await umi.rpc.confirmTransaction(signature, {
+      strategy: { type: 'blockhash', blockhash: blockhash.blockhash, lastValidBlockHeight: blockhash.lastValidBlockHeight },
+      commitment: 'confirmed',
     });
 
     const remaining = Number(candyMachine.data.itemsAvailable) - Number(candyMachine.itemsRedeemed) - 1;
