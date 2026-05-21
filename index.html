@@ -459,12 +459,13 @@
           n >= 1e3 ? `$${(n/1e3).toFixed(1)}K` :
           `$${n.toFixed(d)}`;
 
+        const trimZeros = (s) => s.replace(/0+$/, '').replace(/\.$/, '');
         const fmtPrice = (n) => {
           if (n >= 1)        return `$${n.toFixed(2)}`;
           if (n >= 0.01)     return `$${n.toFixed(4)}`;
           if (n >= 0.0001)   return `$${n.toFixed(6)}`;
-          if (n >= 0.000001) return `$${parseFloat(n.toFixed(8))}`;
-          return `$${parseFloat(n.toFixed(10))}`;
+          if (n >= 0.000001) return `$${trimZeros(n.toFixed(8))}`;
+          return `$${trimZeros(n.toFixed(10))}`;
         };
 
         const set = (id, val, cls) => {
