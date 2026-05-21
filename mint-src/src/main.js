@@ -147,6 +147,9 @@ mintBtn.addEventListener('click', async () => {
       owner: publicKey(CREATOR),
     });
 
+    // Fetch blockhash before building (required by UMI)
+    const blockhash = await umi.rpc.getLatestBlockhash();
+
     // Build transaction without signing
     let builtTx = await transactionBuilder()
       .add(setComputeUnitLimit(umi, { units: 800_000 }))
@@ -163,6 +166,7 @@ mintBtn.addEventListener('click', async () => {
           }),
         } : {},
       }))
+      .setBlockhash(blockhash)
       .build(umi);
 
     // Phantom signs first (per Phantom Lighthouse requirements)
@@ -171,7 +175,6 @@ mintBtn.addEventListener('click', async () => {
     builtTx = await nftMint.signTransaction(builtTx);
 
     // Send pre-signed transaction and confirm
-    const blockhash = await umi.rpc.getLatestBlockhash();
     const signature = await umi.rpc.sendTransaction(builtTx, { skipPreflight: true });
     await umi.rpc.confirmTransaction(signature, {
       strategy: { type: 'blockhash', blockhash: blockhash.blockhash, lastValidBlockHeight: blockhash.lastValidBlockHeight },
