@@ -28,8 +28,8 @@ const {
   PROGRAM_ID: METADATA_PROGRAM_ID_RAW,
 } = pkg;
 
-const MINT_ADDRESS = "CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx";
-const DEFAULT_METADATA_URI = "https://damo333.github.io/damocoin/damocoin.json";
+const MINT_ADDRESS = "DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx";
+const DEFAULT_METADATA_URI = "https://raw.githubusercontent.com/damo333/damocoin/main/damocoin-metadata.json";
 
 const MPL_TOKEN_METADATA_PROGRAM_ID =
   typeof METADATA_PROGRAM_ID_RAW === "string"
