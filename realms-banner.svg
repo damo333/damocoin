@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="200" viewBox="0 0 1200 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#0f1829"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00c6ff"/>
+      <stop offset="100%" stop-color="#0072ff"/>
+    </linearGradient>
+    <filter id="blur1"><feGaussianBlur stdDeviation="40"/></filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="200" fill="url(#bg)"/>
+
+  <!-- Glow blobs -->
+  <circle cx="150" cy="100" r="160" fill="#3b82f6" opacity="0.10" filter="url(#blur1)"/>
+  <circle cx="1100" cy="100" r="140" fill="#8b5cf6" opacity="0.09" filter="url(#blur1)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="1150" cy="40" r="80" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.12"/>
+  <circle cx="1150" cy="40" r="50" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.10"/>
+
+  <!-- Grid dots -->
+  <circle cx="720" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="758" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="796" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="834" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="872" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="910" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="948" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="986" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1024" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1062" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1100" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1138" cy="25" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="720" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="758" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="796" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="834" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="872" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="910" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="948" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="986" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1024" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1062" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1100" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1138" cy="73" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="720" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="758" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="796" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="834" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="872" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="910" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="948" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="986" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1024" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1062" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1100" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1138" cy="121" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="720" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="758" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="796" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="834" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="872" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="910" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="948" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="986" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1024" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1062" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1100" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/><circle cx="1138" cy="169" r="1.2" fill="#3b82f6" opacity="0.10"/>
+
+  <!-- Logo box -->
+  <rect x="24" y="24" width="152" height="152" rx="30" fill="url(#logoGrad)"/>
+  <circle cx="100" cy="100" r="55" fill="rgba(255,255,255,0.10)"/>
+  <text x="100" y="128" font-family="Arial Black, Arial, sans-serif" font-size="74" font-weight="900" text-anchor="middle" fill="#ffffff" letter-spacing="-3">D</text>
+
+  <!-- Main text -->
+  <text x="200" y="82" font-family="Arial Black, Arial, sans-serif" font-size="48" font-weight="900" letter-spacing="-2" fill="url(#textGrad)">DamoCoin DAO</text>
+
+  <!-- Divider -->
+  <rect x="200" y="94" width="380" height="2" fill="url(#textGrad)" opacity="0.4" rx="1"/>
+
+  <!-- Subtitle -->
+  <text x="200" y="126" font-family="Arial, sans-serif" font-size="18" fill="#94a3b8" letter-spacing="0.5">Community Governance · DAMO Token Voting · Solana</text>
+
+  <!-- Badge -->
+  <rect x="200" y="144" width="160" height="28" rx="14" fill="rgba(34,197,94,0.10)" stroke="rgba(34,197,94,0.25)" stroke-width="1"/>
+  <circle cx="220" cy="158" r="5" fill="#22c55e"/>
+  <text x="234" y="163" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#22c55e">1 DAMO = 1 Vote</text>
+
+  <!-- Bottom accent -->
+  <rect x="0" y="197" width="1200" height="3" fill="url(#textGrad)" opacity="0.6"/>
+</svg>
