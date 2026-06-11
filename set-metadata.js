@@ -6,8 +6,8 @@
  *
  * Defaults:
  *   keypair: ~/.config/solana/id.json
- *   mint:    CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx  (DamoCoin mainnet)
- *   uri:     https://damo333.github.io/damocoin/damocoin.json
+ *   mint:    DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx  (DamoCoin v2 mainnet)
+ *   uri:     https://raw.githubusercontent.com/damo333/damocoin/main/damocoin-metadata.json
  */
 
 import fs from "fs";

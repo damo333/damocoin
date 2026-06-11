@@ -8,7 +8,7 @@ A custom Solana SPL token deployed on Solana Mainnet, with on-chain Metaplex met
 |---|---|
 | Name | DamoCoin |
 | Symbol | DAMO |
-| Mint address | `CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx` |
+| Mint address | `DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx` |
 | Decimals | 9 |
 | Total supply | 1,000,000,000 DAMO |
 | Network | Solana Mainnet |
@@ -96,14 +96,14 @@ Phantom, Solflare, and most Solana wallets read this on-chain data — no regist
 Tokens with valid on-chain Metaplex metadata are automatically labelled:
 
 ```
-https://explorer.solana.com/address/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx
+https://explorer.solana.com/address/DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx
 ```
 
 ### Solscan
 
 Submit token info at:
 ```
-https://solscan.io/token/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx
+https://solscan.io/token/DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx
 ```
 Click **"Update token info"** and fill in name, symbol, logo, website. Uses the data in `solana-token-list-entry.json`.
 
@@ -111,7 +111,7 @@ Click **"Update token info"** and fill in name, symbol, logo, website. Uses the 
 
 Jupiter (jup.ag) now uses organic discovery — no PR required. Token page:
 ```
-https://jup.ag/tokens/CuhkVj1PKAMphKu8LsgaQ4wQLb95cb2w9wG7Ub9K6Xmx
+https://jup.ag/tokens/DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx
 ```
 Community members can submit **smart likes** there to help get DAMO verified. Creating a liquidity pool on a DEX (Raydium, Orca) will make the token tradeable and discoverable.
 

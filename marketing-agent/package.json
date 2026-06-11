@@ -1,0 +1,16 @@
+{
+  "name": "damocoin-marketing-agent",
+  "version": "1.0.0",
+  "description": "DamoCoin Discord marketing bot with Claude AI content generation",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "deploy-commands": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.56.0",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.5"
+  }
+}
