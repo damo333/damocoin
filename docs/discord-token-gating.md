@@ -35,8 +35,8 @@ Don't assign them to anyone manually — the bot will.
 2. Select your server — it will prompt you to **invite the Collab.Land bot** (accept the role-management permission; that's how it assigns holder roles)
 3. **Important:** in Server Settings → Roles, drag the Collab.Land bot's role **above** `DAMO Holder` and `Damo OG` (bots can only assign roles below their own)
 4. In the Command Center, create **Token Gating Rules (TGRs)**:
-   - **DAMO Holder**: chain **Solana**, token type **SPL token**, address `DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx`, minimum balance of your choice (e.g. 100,000 DAMO — pick a threshold that means "real holder" but isn't exclusionary)
-   - **Damo OG**: chain **Solana**, token type **NFT/collection**, address `NEPpgFCxJsfTo7hjGTsWTT3FXaXgokb6dbnZyHQsJUk`
+   - **DAMO Holder**: token type **Solana FT**, address `DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx`, minimum balance of your choice (e.g. 100,000 DAMO — pick a threshold that means "real holder" but isn't exclusionary)
+   - **Damo OG**: token type **Solana NFT**, filter **creators**, address `G5CMpZGvpx4znZywDsvmkfG3EEkXpxS9LTceNa7DcnPN` (the Candy Machine verified-creator PDA — NOT the collection mint; the filter determines how the address is interpreted), min amount 1
 5. The bot posts a **"Let's Go!" / Connect Wallet** message — put it in a `#verify-wallet` channel (visible to everyone)
 
 ### Step 4 — Member experience
