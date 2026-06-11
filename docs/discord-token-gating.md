@@ -27,7 +27,10 @@ Don't assign them to anyone manually — the bot will.
 
 ### Step 3 — Set up Matrica
 
-1. Go to [matrica.io](https://matrica.io) and sign in with Discord
+> Note: [matrica.io](https://matrica.io) is the user-facing site (for holders linking
+> their own wallets). Community admin happens on the separate business portal.
+
+1. Go to [business.matrica.io](https://business.matrica.io/) and sign in with Discord
 2. Create a community for your server and invite the **Matrica bot** (it will request role-management permission — needed to assign the holder roles)
 3. **Important:** in Server Settings → Roles, drag the Matrica bot's role **above** `DAMO Holder` and `Damo OG` (bots can only assign roles below their own)
 4. In the Matrica dashboard, add role rules:
