@@ -2,9 +2,13 @@
 
 Goal: a **#holders-lounge** channel (and optionally an **#og-collectors** channel) that only verified DAMO / Damo OG NFT holders can see. Verification is done by a wallet-verification bot — members connect their Solana wallet once, the bot checks their balance, and assigns a role automatically.
 
-## Recommended bot: Matrica
+## Recommended bot: Collab.Land (free tier)
 
-[Matrica](https://matrica.io) is the most widely used Solana wallet-verification service. The basic community tier is free and supports SPL token and NFT role gating.
+[Collab.Land](https://www.collab.land) supports Solana SPL tokens and NFTs, and its
+**Starter plan is free** — up to 25 verified members with balance re-checks every
+24 hours. That's plenty to start; upgrade only if the community outgrows it.
+
+(Matrica is the other major Solana option but now requires a paid business plan.)
 
 ### Step 1 — Create the roles in Discord
 
@@ -25,30 +29,28 @@ Don't assign them to anyone manually — the bot will.
    - `DAMO Holder` → **View Channel: ✓ (allow)**
 3. Optionally repeat for `#og-collectors` with the `Damo OG` role.
 
-### Step 3 — Set up Matrica
+### Step 3 — Set up Collab.Land
 
-> Note: [matrica.io](https://matrica.io) is the user-facing site (for holders linking
-> their own wallets). Community admin happens on the separate business portal.
-
-1. Go to [business.matrica.io](https://business.matrica.io/) and sign in with Discord
-2. Create a community for your server and invite the **Matrica bot** (it will request role-management permission — needed to assign the holder roles)
-3. **Important:** in Server Settings → Roles, drag the Matrica bot's role **above** `DAMO Holder` and `Damo OG` (bots can only assign roles below their own)
-4. In the Matrica dashboard, add role rules:
-   - **DAMO Holder**: token rule → SPL token mint `DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx`, minimum balance of your choice (e.g. 100,000 DAMO — pick a threshold that means "real holder" but isn't exclusionary)
-   - **Damo OG**: NFT rule → collection mint `NEPpgFCxJsfTo7hjGTsWTT3FXaXgokb6dbnZyHQsJUk`
-5. Create a `#verify-wallet` channel (visible to everyone) and post the Matrica verification link there
+1. Go to the Collab.Land Command Center: [cc.collab.land](https://cc.collab.land) and sign in with Discord
+2. Select your server — it will prompt you to **invite the Collab.Land bot** (accept the role-management permission; that's how it assigns holder roles)
+3. **Important:** in Server Settings → Roles, drag the Collab.Land bot's role **above** `DAMO Holder` and `Damo OG` (bots can only assign roles below their own)
+4. In the Command Center, create **Token Gating Rules (TGRs)**:
+   - **DAMO Holder**: chain **Solana**, token type **SPL token**, address `DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx`, minimum balance of your choice (e.g. 100,000 DAMO — pick a threshold that means "real holder" but isn't exclusionary)
+   - **Damo OG**: chain **Solana**, token type **NFT/collection**, address `NEPpgFCxJsfTo7hjGTsWTT3FXaXgokb6dbnZyHQsJUk`
+5. The bot posts a **"Let's Go!" / Connect Wallet** message — put it in a `#verify-wallet` channel (visible to everyone)
 
 ### Step 4 — Member experience
 
-1. Member clicks the link in `#verify-wallet`
+1. Member clicks the verify button in `#verify-wallet`
 2. Signs a message with Phantom/Solflare (no transaction, no fee — just proof of ownership)
-3. Matrica checks their balances and assigns roles automatically
-4. Roles update periodically, so members who sell below the threshold lose access automatically
+3. Collab.Land checks their balances and assigns roles automatically
+4. Balances re-check every 24h on the free plan, so members who sell below the threshold lose access automatically
 
-## Alternatives if Matrica doesn't work out
+## Alternatives if Collab.Land doesn't work out
 
-- **Hashlist** (hashlist.io) — similar Solana-native gating
-- **Guild.xyz** — multi-chain, free, supports Solana SPL tokens
+- **Guild.xyz** — free, multi-chain (verify current Solana support first)
+- **Matrica** (business.matrica.io) — Solana-native, paid business plans
+- **Hashlist** (hashlist.io) — Solana-native gating
 
 ## Tips
 
