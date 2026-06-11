@@ -54,9 +54,23 @@ npm start
 | `/price` | Shows live $DAMO price |
 
 All `/generate` commands show a preview **only visible to you** with three buttons:
-- **Post** (or **Copy text** for tweets) — approves and posts/shows the content
+- **Post** (or **Show tweet to copy** for tweets) — approves and posts/shows the content
 - **Regenerate** — generates a fresh version
 - **Discard** — cancels
+
+Drafts expire after 1 hour if not approved.
+
+## Daily GM draft
+
+If `DISCORD_OWNER_ID` is set in `.env`, the bot DMs you a fresh GM post every
+morning at `DAILY_GM_HOUR` (default 9:00 local time) with the same
+approve/regenerate/discard buttons. Approving posts it straight to #general.
+
+To get your user ID: Discord Settings → Advanced → enable Developer Mode,
+then right-click your own name in any chat → **Copy User ID**.
+
+> Note: the bot must share a server with you and you need DMs from server
+> members enabled for the DM to arrive.
 
 ## Cheap hosting options
 

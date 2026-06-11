@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DamoCoin (DAMO) Roadmap</title>
+  <meta name="description" content="The DamoCoin roadmap — what's done, what's in progress, and what's next for the DAMO token, NFT collection, and community." />
+  <link rel="icon" type="image/svg+xml" href="damocoin-logo.svg" />
+  <meta property="og:title" content="DamoCoin Roadmap" />
+  <meta property="og:description" content="What's done, what's in progress, and what's next for DamoCoin." />
+  <meta property="og:image" content="https://damo333.github.io/damocoin/damocoin-banner.png" />
+  <meta property="og:url" content="https://damo333.github.io/damocoin/roadmap.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@DamoCoin" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MLD7JTJ2VK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MLD7JTJ2VK');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0a0e1a;
+      --surface: #111827;
+      --border:  #1f2d45;
+      --accent:  #3b82f6;
+      --accent2: #8b5cf6;
+      --text:    #f1f5f9;
+      --muted:   #94a3b8;
+      --green:   #22c55e;
+      --gold:    #f59e0b;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; border-bottom: 1px solid var(--border);
+      background: rgba(10,14,26,0.85); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; text-decoration: none; color: var(--text); }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 50%; }
+
+    .hero {
+      text-align: center; padding: 64px 24px 48px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
+    }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; }
+    .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--muted); margin-top: 12px; font-size: 1rem; max-width: 520px; margin-inline: auto; }
+
+    .content { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+    .phase {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; margin-top: 32px;
+      position: relative;
+    }
+    .phase-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+    .phase-head h2 { font-size: 1.15rem; font-weight: 700; }
+    .phase-head h2 small { display: block; color: var(--muted); font-weight: 400; font-size: 0.85rem; margin-top: 4px; }
+
+    .pill {
+      display: inline-block; padding: 4px 14px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600; white-space: nowrap;
+    }
+    .pill-done { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .pill-progress { background: rgba(59,130,246,0.15); color: var(--accent); }
+    .pill-planned { background: rgba(139,92,246,0.15); color: #a78bfa; }
+    .pill-future { background: rgba(148,163,184,0.12); color: var(--muted); }
+
+    .phase ul { list-style: none; }
+    .phase li {
+      padding: 10px 0 10px 30px; border-bottom: 1px solid var(--border);
+      font-size: 0.9rem; position: relative; color: var(--text);
+    }
+    .phase li:last-child { border-bottom: none; }
+    .phase li::before {
+      position: absolute; left: 2px; top: 9px; font-size: 0.85rem;
+    }
+    .phase li.done::before { content: '✅'; }
+    .phase li.doing::before { content: '🔄'; }
+    .phase li.todo::before { content: '⬜'; }
+    .phase li .li-note { color: var(--muted); font-size: 0.8rem; display: block; margin-top: 2px; }
+
+    .notice {
+      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 12px; padding: 16px 20px; font-size: 0.875rem; color: var(--muted);
+      line-height: 1.6; margin-top: 32px;
+    }
+    .notice a { color: var(--accent); }
+
+    footer {
+      text-align: center; padding: 32px 24px;
+      color: var(--muted); font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="damocoin-logo.svg" alt="DAMO" />
+      DamoCoin
+    </a>
+    <div style="display:flex; gap:20px; align-items:center;">
+      <a href="tokenomics.html" style="color:var(--muted); text-decoration:none; font-size:0.9rem;">Tokenomics</a>
+      <a href="index.html#buy" style="color:var(--muted); text-decoration:none; font-size:0.9rem;">How to Buy</a>
+      <a href="https://raydium.io/swap/?inputCurrency=sol&outputCurrency=DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx" target="_blank" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6); color:#fff; padding:8px 16px; border-radius:8px; font-size:0.9rem; font-weight:600; text-decoration:none;">Buy DAMO</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1><span>DAMO</span> Roadmap</h1>
+    <p>An honest look at where DamoCoin is, and where it's going. No moon promises — just the actual plan.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- PHASE 1 -->
+    <div class="phase">
+      <div class="phase-head">
+        <h2>Phase 1 — Foundation<small>Launch the token and core infrastructure</small></h2>
+        <span class="pill pill-done">Complete</span>
+      </div>
+      <ul>
+        <li class="done">DAMO v2 token launched on Solana Mainnet — 1B fixed supply, mint &amp; freeze authority revoked</li>
+        <li class="done">On-chain Metaplex metadata set</li>
+        <li class="done">Website live with real-time price, chart &amp; stats</li>
+        <li class="done">DAMO/SOL liquidity pool live on Raydium</li>
+        <li class="done">Damo OG NFT collection — 100 NFTs, mintable with DAMO via Candy Machine v3</li>
+        <li class="done">10% of supply airdropped to v1 holders</li>
+      </ul>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase">
+      <div class="phase-head">
+        <h2>Phase 2 — Community &amp; Visibility<small>Build presence and make DAMO easy to find</small></h2>
+        <span class="pill pill-progress">In Progress</span>
+      </div>
+      <ul>
+        <li class="done">AI marketing assistant for consistent Discord &amp; Twitter content</li>
+        <li class="doing">Solscan token info verification<span class="li-note">Submitted — under review</span></li>
+        <li class="doing">Consistent daily presence on Discord &amp; Twitter</li>
+        <li class="todo">Token-gated holders-only Discord channels</li>
+        <li class="todo">Jupiter community verification<span class="li-note">Like DAMO on jup.ag to help</span></li>
+      </ul>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase">
+      <div class="phase-head">
+        <h2>Phase 3 — Growth<small>Deepen liquidity and expand the community</small></h2>
+        <span class="pill pill-planned">Planned</span>
+      </div>
+      <ul>
+        <li class="todo">Custom domain &amp; project email</li>
+        <li class="todo">Telegram community with bot integration</li>
+        <li class="todo">Deepen Raydium liquidity pool</li>
+        <li class="todo">NFT holder perks — early access &amp; community voting</li>
+        <li class="todo">Community airdrops from the 30% community allocation</li>
+      </ul>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase">
+      <div class="phase-head">
+        <h2>Phase 4 — Long Term<small>Only once the fundamentals support it</small></h2>
+        <span class="pill pill-future">Future</span>
+      </div>
+      <ul>
+        <li class="todo">CoinGecko &amp; CoinMarketCap listings<span class="li-note">Requires sustained trading volume</span></li>
+        <li class="todo">Community governance for project decisions</li>
+        <li class="todo">Additional utility shaped by community input</li>
+      </ul>
+    </div>
+
+    <div class="notice">
+      This roadmap is a living document and will evolve with the project. DamoCoin is a community project — nothing here is financial advice, and timelines depend on community growth. Follow progress on <a href="https://github.com/damo333/damocoin">GitHub</a>, <a href="https://twitter.com/DamoCoin">Twitter</a>, and <a href="https://discord.gg/zt2v8YJQ">Discord</a>.
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 DamoCoin · <a href="index.html">Home</a> · <a href="tokenomics.html">Tokenomics</a> · <a href="https://twitter.com/DamoCoin">Twitter</a> · <a href="https://discord.gg/zt2v8YJQ">Discord</a> · <a href="https://github.com/damo333/damocoin">GitHub</a> · <a href="https://explorer.solana.com/address/DPbc8tyMmEc5NKiLnJQQZhuLErwL6A7SwKomFKV4z2Vx">Explorer</a></p>
+  </footer>
+
+</body>
+</html>
